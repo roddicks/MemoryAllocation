@@ -10,5 +10,13 @@ public class Main {
         Process test = new Process(1, 1);
 
         firstFitMemory.allocateMemory(test);
+
+        RequestGenerator requestGenerator = new RequestGenerator(20);
+
+        try{
+            while(requestGenerator.hasNext()){
+                System.out.println("size: " + requestGenerator.getNextRequest().getSize());
+            }
+        } catch(InterruptedException e){}
     }
 }
