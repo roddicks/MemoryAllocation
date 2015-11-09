@@ -8,20 +8,12 @@ import sun.misc.Queue;
 public class RequestGenerator {
 
     //TODO: For each request, invoke appropriate function of Memory
-    //After request, update three performance parameters
-    Queue<Request> requestQueue = new Queue<>();
+    public static int allocatedProcessIDs = 1;
 
-    public RequestGenerator(int requests) {
-        for(int i = 0; i < requests; i++){
-            requestQueue.enqueue(new Request());
-        }
-    }
+    public Request generateRequest(){
+        Request request = new Request();
 
-    public Request getNextRequest() throws InterruptedException {
-        return requestQueue.dequeue();
-    }
-
-    public boolean hasNext() {
-        return !requestQueue.isEmpty();
+        System.out.println("Type: " + request.getType() + ", pid: " + request.getProcess().getPid());
+        return request;
     }
 }

@@ -20,18 +20,32 @@ public class Memory {
         }
     }
 
-    int allocateMemory(Process p) {
+    int handleRequest(Request r) {
+
+        if(r.getType() == RequestType.ALLOCATE){
+            return allocateMemory(r.getProcess());
+        }
+        if(r.getType() == RequestType.DEALLOCATE){
+            return deallocateMemory(r.getProcess());
+        }
+
+        return -1;
+    }
+
+    private int allocateMemory(Process p) {
         //TODO: Define allocateMemory methods
         int i = algorithm.allocateMemory(processes);
 
         return i >= 0 ? i : -1;
     }
 
-    int deallocateMemory(int processId) {
+    private int deallocateMemory(Process p) {
         for(MemoryUnit m : processes) {
-            if(m.getProcess().getPid() == processId) {
-                processes.remove(m);
-                return 1;
+            if(m.getProcess() != null){
+                if(m.getProcess().getPid() == p.getPid()) {
+                    processes.remove(m);
+                    return 1;
+                }
             }
         }
         return -1;
@@ -40,5 +54,9 @@ public class Memory {
     int fragmentCount(){
         //TODO: Count holes
         return -1;
+    }
+
+    public LinkedList<MemoryUnit> getProcesses() {
+        return processes;
     }
 }

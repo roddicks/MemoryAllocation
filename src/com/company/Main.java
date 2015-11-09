@@ -3,20 +3,22 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        AllocationAlgorithm firstFit = new FirstFitAlgorithm();
+        FirstFitAlgorithm firstFit = new FirstFitAlgorithm();
+        BestFitAlgorithm bestFit = new BestFitAlgorithm();
+        WorstFitAlgorithm worstFit = new WorstFitAlgorithm();
 
         Memory firstFitMemory = new Memory(firstFit);
+        Memory bestFitMemory = new Memory(bestFit);
+        Memory worstFitMemory = new Memory(worstFit);
 
-        Process test = new Process(1, 1);
+        RequestGenerator requestGenerator = new RequestGenerator();
 
-        firstFitMemory.allocateMemory(test);
+        for(int i = 0; i < 10000; i++){
+            Request r = requestGenerator.generateRequest();
+            firstFitMemory.handleRequest(r);
+            bestFitMemory.handleRequest(r);
+            worstFitMemory.handleRequest(r);
+        }
 
-        RequestGenerator requestGenerator = new RequestGenerator(20);
-
-        try{
-            while(requestGenerator.hasNext()){
-                System.out.println("size: " + requestGenerator.getNextRequest().getSize());
-            }
-        } catch(InterruptedException e){}
     }
 }
