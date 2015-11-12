@@ -27,11 +27,12 @@ public class FirstFitAlgorithm implements AllocationAlgorithm {
                 if(memory.processes.get(i).getProcess() == null) {  //Still in fragment
                     tailOfFragment = i;
                 }
-                else {
+                else {  //Reached end of fragment
                     inFragment = false;
                 }
             }
 
+            //If the fragment is of adequate size, assign process and break out of loop
             if(tailOfFragment - headOfFragment >= process.getSize()) {
                 for(int j = headOfFragment; j < tailOfFragment; j++) {
                     memory.processes.get(j).setProcess(process);

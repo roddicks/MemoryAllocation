@@ -37,7 +37,6 @@ public class Memory {
     int handleRequest(Request r) {
 
         if(r.getType() == RequestType.ALLOCATE){
-            System.out.println("Allocating...");
             int i = allocateMemory(r.getProcess());
             statReporter.updateCounts(i, fragmentCount());
             return i;

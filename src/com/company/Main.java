@@ -14,7 +14,39 @@ public class Main {
 
     public static void main(String[] args) {
 
-        fullTest(10000);
+//        fullTest(10000);
+
+//        Request r1 = new Request(RequestType.ALLOCATE, new Process(2, 3));
+//        Request r2 = new Request(RequestType.ALLOCATE, new Process(3, 3));
+//        Request r3 = new Request(RequestType.ALLOCATE, new Process(4, 3));
+//        Request r4 = new Request(RequestType.DEALLOCATE, new Process(3, 3));
+//        Request r5 = new Request(RequestType.ALLOCATE, new Process(5, 3));
+//
+//
+//        firstFitMemory.handleRequest(r1);
+//        firstFitMemory.handleRequest(r2);
+//        firstFitMemory.handleRequest(r3);
+//        firstFitMemory.handleRequest(r4);
+//        firstFitMemory.handleRequest(r5);
+//
+//
+//        worstFitMemory.handleRequest(r1);
+//        worstFitMemory.handleRequest(r2);
+//        worstFitMemory.handleRequest(r3);
+//        worstFitMemory.handleRequest(r4);
+//        worstFitMemory.handleRequest(r5);
+//
+//
+//        bestFitMemory.handleRequest(r1);
+//        bestFitMemory.handleRequest(r2);
+//        bestFitMemory.handleRequest(r3);
+//        bestFitMemory.handleRequest(r4);
+//        bestFitMemory.handleRequest(r5);
+//
+//
+//        System.out.println(firstFitMemory);
+//        System.out.println(worstFitMemory);
+//        System.out.println(bestFitMemory);
     }
 
     static void fullTest(int requestCount){
