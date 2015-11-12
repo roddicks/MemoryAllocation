@@ -11,6 +11,10 @@ public class Request {
     private RequestType type;
     private Process process;
 
+
+    /**
+     * Constructor generates a random request
+     */
     public Request(){
         type = RequestType.randomType();
 
@@ -23,10 +27,22 @@ public class Request {
             RequestGenerator.allocatedProcessIDs++;
         }
         else if (type == RequestType.DEALLOCATE){
+            //Random pid in the range 0 to the current highest pid
             int pid = rand.nextInt(RequestGenerator.allocatedProcessIDs);
 
             process = new Process(pid, size);
         }
+    }
+
+
+    /**
+     * Explicit Request creation, used for testing purposes
+     * @param type      - The RequestType to be assigned
+     * @param process   - The Process to be allocated/deallocated
+     */
+    public Request(RequestType type, Process process){
+        this.type = type;
+        this.process = process;
     }
 
     public RequestType getType() {

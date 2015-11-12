@@ -7,13 +7,16 @@ import sun.misc.Queue;
  */
 public class RequestGenerator {
 
-    //TODO: For each request, invoke appropriate function of Memory
     public static int allocatedProcessIDs = 1;
 
+
+    /**
+     * Generates a new request
+     * @return  - A new Request
+     */
     public Request generateRequest(){
         Request request = new Request();
 
-        System.out.println("Type: " + request.getType() + ", pid: " + request.getProcess().getPid());
         return request;
     }
 }
