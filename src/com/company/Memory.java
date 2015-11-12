@@ -34,7 +34,7 @@ public class Memory {
 
     private int allocateMemory(Process p) {
         //TODO: Define allocateMemory methods
-        int i = algorithm.allocateMemory(p);
+        int i = algorithm.allocateMemory(p, );
 
         return i >= 0 ? i : -1;
     }

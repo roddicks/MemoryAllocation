@@ -5,7 +5,8 @@ package com.company;
  */
 public class FirstFitAlgorithm implements AllocationAlgorithm {
     @Override
-    public int allocateMemory(Process process) {
+    public int allocateMemory(Process process, Memory memory) {
+        
         return 0;
     }
 }
