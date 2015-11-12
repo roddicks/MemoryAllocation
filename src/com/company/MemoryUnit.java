@@ -13,4 +13,14 @@ public class MemoryUnit {
     public Process getProcess() {
         return process;
     }
+
+    @Override
+    public String toString() {
+        if(process != null) {
+            return "" + process.getPid();
+        }
+        else {
+            return "x";
+        }
+    }
 }

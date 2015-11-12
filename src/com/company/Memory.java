@@ -7,7 +7,7 @@ import java.util.LinkedList;
  */
 public class Memory {
 
-    final private LinkedList<MemoryUnit> processes = new LinkedList<>();
+    final private static LinkedList<MemoryUnit> processes = new LinkedList<>();
     final private int TOTAL_MEMORY = 256;   //256KB
     final private int UNIT_SIZE = 2;        //2KB
 
@@ -34,7 +34,7 @@ public class Memory {
 
     private int allocateMemory(Process p) {
         //TODO: Define allocateMemory methods
-        int i = algorithm.allocateMemory(processes);
+        int i = algorithm.allocateMemory(p);
 
         return i >= 0 ? i : -1;
     }
@@ -58,5 +58,14 @@ public class Memory {
 
     public LinkedList<MemoryUnit> getProcesses() {
         return processes;
+    }
+
+    @Override
+    public String toString() {
+        String str = "";
+        for(int i = 0; i < processes.size(); i++) {
+            str += processes.get(i) + "|";
+        }
+        return str;
     }
 }
