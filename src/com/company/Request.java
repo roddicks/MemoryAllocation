@@ -45,9 +45,11 @@ public class Request {
         this.process = process;
     }
 
+
     public RequestType getType() {
         return type;
     }
+
 
     public Process getProcess() {
         return process;

@@ -4,6 +4,13 @@ package com.company;
  * Created by SheldonCOMP4980 on 11/8/2015.
  */
 public class WorstFitAlgorithm implements AllocationAlgorithm {
+
+    /**
+     * Assigns the process to the memory segment that leaves the most leftover space
+     * @param process   - The process to be allocated
+     * @param memory    - A reference to the Memory instance the Algorithm is instantiated in
+     * @return          - No. of nodes traversed to find proper location (-1 if allocation failed)
+     */
     @Override
     public int allocateMemory(Process process, Memory memory) {
         int headOfFragment = 0, tailOfFragment = 0, nodesTraversed = 0;

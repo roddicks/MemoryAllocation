@@ -12,8 +12,8 @@ public class Memory {
     final private int UNIT_SIZE = 2;        //2KB
 
     private AllocationAlgorithm algorithm;
-
     private StatReporter statReporter;
+
 
     /**
      * Takes a memory allocation algorithm and instantiates it, instantiates memory units
