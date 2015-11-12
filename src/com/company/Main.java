@@ -16,9 +16,11 @@ public class Main {
         for(int i = 0; i < 10000; i++){
             Request r = requestGenerator.generateRequest();
             firstFitMemory.handleRequest(r);
-            bestFitMemory.handleRequest(r);
-            worstFitMemory.handleRequest(r);
+            //bestFitMemory.handleRequest(r);
+            //worstFitMemory.handleRequest(r);
         }
+
+        System.out.println(firstFitMemory);
 
     }
 }

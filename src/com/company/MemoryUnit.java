@@ -14,6 +14,10 @@ public class MemoryUnit {
         return process;
     }
 
+    public void setProcess(Process process) {
+        this.process = process;
+    }
+
     @Override
     public String toString() {
         if(process != null) {
