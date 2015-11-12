@@ -6,27 +6,15 @@ public class Main {
     static BestFitAlgorithm bestFit = new BestFitAlgorithm();
     static WorstFitAlgorithm worstFit = new WorstFitAlgorithm();
 
-    static Memory firstFitMemory = new Memory(firstFit);
-    static Memory bestFitMemory = new Memory(bestFit);
-    static Memory worstFitMemory = new Memory(worstFit);
+    static Memory firstFitMemory = new Memory(firstFit, new StatReporter());
+    static Memory bestFitMemory = new Memory(bestFit, new StatReporter());
+    static Memory worstFitMemory = new Memory(worstFit, new StatReporter());
 
     static RequestGenerator requestGenerator = new RequestGenerator();
 
     public static void main(String[] args) {
 
-        //fullTest(10000);
-
-        Request r1 = new Request(RequestType.ALLOCATE, new Process(2, 4));
-        Request r2 = new Request(RequestType.ALLOCATE, new Process(3, 3));
-        Request r3 = new Request(RequestType.DEALLOCATE, new Process(2, 4));
-        Request r4 = new Request(RequestType.ALLOCATE, new Process(4, 3));
-
-        firstFitMemory.handleRequest(r1);
-        firstFitMemory.handleRequest(r2);
-        firstFitMemory.handleRequest(r3);
-        firstFitMemory.handleRequest(r4);
-        System.out.println(firstFitMemory);
-        System.out.println("fragcount: " + firstFitMemory.fragmentCount());
+        fullTest(10000);
     }
 
     static void fullTest(int requestCount){
@@ -37,5 +25,7 @@ public class Main {
             bestFitMemory.handleRequest(r);
             worstFitMemory.handleRequest(r);
         }
+        System.out.println("\n" + firstFitMemory);
+        System.out.println(firstFitMemory.printStatistics());
     }
 }

@@ -13,16 +13,19 @@ public class Memory {
 
     private AllocationAlgorithm algorithm;
 
+    private StatReporter statReporter;
 
     /**
      * Takes a memory allocation algorithm and instantiates it, instantiates memory units
-     * @param algorithm - Implementation of the AllocationAlgorithm interface
+     * @param algorithm     - Implementation of the AllocationAlgorithm interface
+     * @param statReporter  - A StatReporter object that will keep track of Memory's statistics
      */
-    public Memory(AllocationAlgorithm algorithm) {
+    public Memory(AllocationAlgorithm algorithm, StatReporter statReporter) {
         this.algorithm = algorithm;
         for(int i = 0; i < TOTAL_MEMORY; i += UNIT_SIZE){
             processes.add(new MemoryUnit(null));
         }
+        this.statReporter = statReporter;
     }
 
 
@@ -35,7 +38,9 @@ public class Memory {
 
         if(r.getType() == RequestType.ALLOCATE){
             System.out.println("Allocating...");
-            return allocateMemory(r.getProcess());
+            int i = allocateMemory(r.getProcess());
+            statReporter.updateCounts(i, fragmentCount());
+            return i;
         }
         if(r.getType() == RequestType.DEALLOCATE){
             return deallocateMemory(r.getProcess());
@@ -51,10 +56,7 @@ public class Memory {
      * @return  - No. of memory units traversed (-1 if p could not be allocated)
      */
     private int allocateMemory(Process p) {
-        //TODO: Define allocateMemory methods
-        int i = algorithm.allocateMemory(p, this);
-        System.out.println("#####Allocated memory at: " + i);
-        return i >= 0 ? i : -1;
+        return algorithm.allocateMemory(p, this);
     }
 
 
@@ -105,6 +107,15 @@ public class Memory {
             }
         }
         return fragments;
+    }
+
+
+    /**
+     * Prints a human-readable list of statistics
+     * @return  - The statistics stored in statReporter
+     */
+    public String printStatistics() {
+        return statReporter.toString();
     }
 
 
